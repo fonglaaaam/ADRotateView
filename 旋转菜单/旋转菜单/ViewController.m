@@ -44,7 +44,7 @@
 }
 
 -(void)ADRotateView:(ADRotateView *)rotateView didSelectedItem:(UIButton *)item{
-    if (item.tag ==107) {
+    if (item.tag == titleArr.count+100) {
         NSLog(@"中间登录按钮被点击了");
     }else{
         NSLog(@"%@按钮被点击了",titleArr[(item.tag-100)]);
