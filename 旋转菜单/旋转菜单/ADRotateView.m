@@ -162,7 +162,7 @@ float speed;  //转动速度
         if (fabsf(anglePerSecond) > mFlingableValue && !_isPlaying) {
             // post一个任务，去自动滚动
             _isPlaying = true;
-            flowtime = [NSTimer scheduledTimerWithTimeInterval:0.1
+            flowtime = [NSTimer scheduledTimerWithTimeInterval:0.02    //每秒大约50帧 看上去不会卡
                                                         target:self
                                                       selector:@selector(flowAction)
                                                       userInfo:nil
@@ -197,7 +197,7 @@ float speed;  //转动速度
 }
 
 -(void)flowAction{
-    if (speed < 0.1) {
+    if (speed < 0.05) {
         _isPlaying = false;
         [flowtime invalidate];
         flowtime = nil;
@@ -205,7 +205,7 @@ float speed;  //转动速度
     }
     // 不断改变mStartAngle，让其滚动，/30为了避免滚动太快
     mStartAngle += speed ;
-    speed = speed/1.1;
+    speed = speed/1.05;
     // 逐渐减小这个值
     //    anglePerSecond /= 1.1;
     [self layoutBtn];
